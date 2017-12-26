@@ -52,15 +52,8 @@ public class HomeController {
         try {
             List<AccountInfoDto> accountInfoList = accountServiceClient.listAllAccounts();
             model.addAttribute("accountInfoList", accountInfoList);
-
-            accountInfoList.forEach(accountInfoDto -> {
-                System.out.println(accountInfoDto);
-            });
-
         } catch (RestClientException e) {
             model.addAttribute("accountInfoListError", "Cannot retrieve account info");
-
-            System.out.println("get error when get all accounts");
         }
     }
 
@@ -84,7 +77,6 @@ public class HomeController {
         try {
             accountServiceClient.initiateAccount(form);
         } catch (RestClientException e) {
-            System.out.println("alibaba" + e.getMessage());
             result.reject(e.getMessage());
             return "user_home";
         }

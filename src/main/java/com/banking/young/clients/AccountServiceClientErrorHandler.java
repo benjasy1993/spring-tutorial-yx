@@ -16,7 +16,6 @@ public class AccountServiceClientErrorHandler extends DefaultResponseErrorHandle
         try {
             super.handleError(response);
         } catch (HttpClientErrorException e) {
-            System.out.println("fuck" + e.getResponseBodyAsString());
             throw new RestClientException(e.getResponseBodyAsString());
         }
     }

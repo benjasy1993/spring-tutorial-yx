@@ -41,8 +41,6 @@ public class RegisterController {
     @RequestMapping(value = "/registerBanker", method = RequestMethod.GET)
     public String bankerRegisterPage(Principal principal) {
 
-        System.out.println("principal name: " + principal);
-
         if (principal != null) {
             return "redirect:/home";
         }
@@ -51,9 +49,6 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerPage(Principal principal) {
-
-        System.out.println("principal name: " + principal);
-
         if (principal != null) {
             return "redirect:/home";
         }
@@ -64,9 +59,6 @@ public class RegisterController {
     @RequestMapping(value = "/registerBanker", method = RequestMethod.POST)
     public String registerBanker(@ModelAttribute(value = "bankerRegisterForm") @Valid BankerRegisterForm form,
                                  BindingResult result) {
-
-        System.out.println("123");
-        System.out.println(form);
 
         if (result.hasErrors()) {
             return "banker_register";
@@ -87,13 +79,7 @@ public class RegisterController {
     public String register(@ModelAttribute(value = "userRegisterForm") @Valid UserRegisterForm form,
                            BindingResult result) {
 
-        System.out.println(form);
-
         if (result.hasErrors()) {
-            System.out.println("got validation errors");
-            System.out.println("field errors count: " + result.getFieldErrorCount());
-            System.out.println("global errors count: " + result.getGlobalErrorCount());
-
             return "register";
         }
 
